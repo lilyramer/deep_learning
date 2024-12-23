@@ -6,16 +6,23 @@ snake = turtle.Turtle()
 turtle.mode(mode ='logo')
 snake.color('green')
 def forw():
-    snake.forward(50)
+    snake.setheading(0)
 def backw():
-    snake.backward(50)
+    snake.setheading(180)
 def turn_right():
-    snake.right(30)
+    snake.setheading(270)
 def turn_left():
-    snake.left(45)
+    snake.setheading(90)
+
 screen.onkey(forw, 'w')
 screen.onkey(backw, 's')
 screen.onkey(turn_right, 'a')
 screen.onkey(turn_left, 'd')
 screen.listen()
+position = (snake.xcor(), snake.ycor())
+positions = []
+while position not in positions:
+    positions.append([position])
+    snake.forward(1)
+print('you missed')
 turtle.done()
