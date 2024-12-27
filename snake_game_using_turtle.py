@@ -5,6 +5,7 @@ turtle.setup(width=200, height=200, startx=100, starty=100)
 snake = turtle.Turtle()
 turtle.mode(mode ='logo')
 snake.color('green')
+
 def forw():
     snake.setheading(0)
 def backw():
@@ -19,10 +20,18 @@ screen.onkey(backw, 's')
 screen.onkey(turn_right, 'a')
 screen.onkey(turn_left, 'd')
 screen.listen()
-position = (snake.xcor(), snake.ycor())
+
+def get_cords():
+    cords = int(snake.xcor()), int(snake.ycor())
+    return cords
+
+position = get_cords()
 positions = []
+
 while position not in positions:
-    positions.append([position])
+    positions.append(position)
     snake.forward(1)
+    position = get_cords()
+
 print('you missed')
 turtle.done()
